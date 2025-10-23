@@ -41,3 +41,4 @@ How is color interpreted by a computer? RGB = Red, Green, Blue. Each is assigned
 
 How do you represent sound? Similar to color, we assign multiple bytes to the note, pitch, volume, instrument... etc. This is then interpreted by the computer through the use of software to produce that sound.
 
+This is also considered "low level" code. Most of this course will be on "higher level", such as C.
