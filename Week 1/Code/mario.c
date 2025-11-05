@@ -2,19 +2,16 @@
 #include <stdio.h>
 
 int get_positive_int(void);
-void print_row(int n);
 void print_space(int n);
+void print_row(int n);
 
 int main(void)
 {
     const int n = get_positive_int();
-    for (int row = 0; row < n; row++)
+    for (int row = 1; row <= n; row++)
     {
-        print_row(row + 1);
-    }
-    for (int space = 0; space < n; space++)
-    {
-        print_space(space + 1);
+        print_space(n - row);
+        print_row(row);
     }
 }
 
@@ -25,7 +22,7 @@ int get_positive_int(void)
     {
         n = get_int("Number: ");
     }
-    while (n < 1);
+    while (n < 1 || n > 8);
     return n;
 }
 
@@ -44,5 +41,4 @@ void print_space(int n)
     {
         printf(" ");
     }
-    printf("\n");
 }
