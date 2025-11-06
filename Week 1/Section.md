@@ -83,3 +83,4 @@ for (int i = 0; i < 2; i++)
 This serves the same function as before. i is set to zero, and if it is less than two, we incrementally increase it by 1. While less than 2, the number is printed. Once it isn't, the loop stops.
 
 So when use while vs for? It depends on what you're trying to accomplish. From above, we can see they can both serve the same function. For loops are often when you know the number of steps you're going to take. While loops are often more fluid and helpful when you don't know the exact amount of steps that may occur.
+
