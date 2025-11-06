@@ -46,3 +46,40 @@ char %c
 string %s
 booleon %i
 
+- Loops and Conditionals
+
+if (calls < 1)
+{
+	printf("Call more often!");
+}
+
+This loop is based on the boolean expression, calls < 1. So if you have called your mom less than onces, the conditional if kicks off the conditional code, printing "Call more often!". You can also include an 'else' to take care of other options. Such as:
+
+else
+{
+	printf("Thanks for calling!");
+}
+
+We then have Loops. Starting with while:
+
+int i = 0;
+while (i < 2)
+{
+	printf("%i\n", i);
+	i = i + 1;
+}
+
+We have the initialization, where we set the variable i to zero. This variable helps us do the right number of repeitions or loops. There's then the boolean expresion, in this case if i is less than 2. 
+
+Since i = 0, the number is printed. Then i + 1 occurs, so we now have i = 1. We go back to the top. Since i is still less than 2, the number is printed again and i + 1 is ran again. i now equals 2, which then breaks the while loop.
+
+There are then For loops:
+
+for (int i = 0; i < 2; i++)
+{
+	printf("%i\n", i);
+}
+
+This serves the same function as before. i is set to zero, and if it is less than two, we incrementally increase it by 1. While less than 2, the number is printed. Once it isn't, the loop stops.
+
+So when use while vs for? It depends on what you're trying to accomplish. From above, we can see they can both serve the same function. For loops are often when you know the number of steps you're going to take. While loops are often more fluid and helpful when you don't know the exact amount of steps that may occur.
