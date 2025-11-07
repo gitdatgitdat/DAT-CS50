@@ -63,9 +63,5 @@ void print_mid_space(int n)
 // right side of pyramid space creation for main
 void print_right_space(int n)
 {
-    for (int i = 0; i < n; i++)
-    {
-        printf(" ");
-    }
     printf("\n");
 }
