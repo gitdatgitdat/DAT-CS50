@@ -1,0 +1,44 @@
+Hans Peter Luhn's Algorithm
+
+Multiple every other digit by 2, starting with the second to last digit
+Add the product of those digits together (So 12 becomes 1 and 2... etc)
+
+Find the sum of the digits that weren't multiplied by 2, starting from the last digit
+Add that sum together with the sum of the numbers from step 1
+
+If the total's last digit is 0, the number is valid
+
+---
+
+Example:
+
+4003600000000014
+
+4 * 2 = 8
+0
+0 * 2 = 0
+3
+6 * 2 = 12
+0
+0 * 2 = 0
+0
+0 * 2 = 0
+0
+0 * 2 = 0
+0
+0 * 2 = 0
+0
+1 * 2 = 2
+4
+
+1: 
+
+2 + 12 + 8 > 2 + 1 + 2 + 8 = 13
+
+2: 
+
+4 + 3 = 7* + 13 = 20
+
+* Sum of digits 
+
+20 ends with 0, so this is a valid card
