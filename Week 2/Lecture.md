@@ -57,3 +57,61 @@ Make sure to keep in mind that we're using square brackets for this. To then add
 scores[0] = 72;
 scores[1] = 73;
 scores[2] = 33;
+
+---
+
+Characters & Strings
+
+Reminder when using strings and characters:
+
+Characters = ' '
+Strings = " "
+
+Strings are a series of charcters, while arrays are a series of integers. So they're quite similar in functions as far as how the computer manages them in their memory. Its notes the end of these series with an extra byte that is all zeroes. So a series of three is actually four bytes.
+
+This explains the " " for strings and ' ' for characters. The double quotes will signal to the compiler that this is a string and needs the null noted on the extra byte. Where a character is going to be a single symbol.
+
+---
+
+Command-Line Arguments
+
+Up til now programs have been:
+
+#include <stdio.h>
+
+int main(void)
+{
+	...
+}
+
+This means our programs can't take command-line arguments. You need to change main from void (Nothing) to something like:
+
+int main(int argc, string argv[])
+
+Now instead of having to ask the user for input, like their name, it can just be included as a command line argument.
+
+---
+
+So if we have been using:
+
+int main(void)
+
+And we now know how to manipulate void, what's up with the int(eger) main is taking in? These are being returned to the computer as status codes. 0 will indicate success, while any other number will represent an issue.
+
+When in C you can enter:
+
+echo $?
+
+After running a successful program to see what status code was returned.
+
+---
+
+Cryptography
+
+Encryption is the scrambling of information in a reversable way.
+
+plaintext + key > cipher > ciphertext
+
+The attached key with the plaintext is how give unique results for the ciphertext.  The idea of bruteforce attacks is going through every possiblity to determine this key.
+
+Decryption is then taking that ciphertext and the inverse of that key to revert it back to its plaintext.
