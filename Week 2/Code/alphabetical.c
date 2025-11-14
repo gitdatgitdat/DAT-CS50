@@ -1,18 +1,35 @@
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
-//If input from user is alphabetical, print yes.
-//If input from user is NOT alphabetical, print no.
+// If input from user is alphabetical, print yes.
+// If input from user is NOT alphabetical, print no.
 
-int main(void)
+int main(int argc, string argv[])
 {
-    //Get user input
-    string text = get_string("Input: ");
+    // Get user input
+    if (argc != 2)
+    {
+        printf("Please provide a word.\n");
+        return 1;
+    }
+    string text = argv[1];
+    int len = strlen(text);
 
-    ///Iterate through each element in the string
-    //Then check if string is in alphabetical order
-    for (int i = 1; i < strlen(text); i++)
+    // Make sure user input is a string, no ints
+    for (int i = 0; i < strlen(text); i++)
+    {
+        if (!isalpha(text[i]))
+        {
+            printf("This is not a letter.\n");
+            return 2;
+        }
+    }
+
+    /// Iterate through each element in the string
+    // Then check if string is in alphabetical order
+    for (int i = 1; i < len; i++)
     {
         if (text[i] < text[i - 1])
         {
@@ -21,6 +38,4 @@ int main(void)
         }
     }
     printf("Yes\n");
-
-    //
 }

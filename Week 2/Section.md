@@ -56,3 +56,20 @@ word[5] = 0
 Spoiler - Strings aren't actually a data type. This will be reviewed in the coming weeks. But for now we're treating them as such.
 
 Hint - When working with sentences, using spaces as a seperater can be helpful.
+
+---
+
+Command-Line Arguments (CLAs)
+
+One we've used is:
+
+make mario
+
+mario being the CLA. This occurs by what is passed into main. So instead of void, we'll see:
+
+int main(int argc, string argv[])
+
+int argc is ARGument Count. Think of it as the number of arguments we can pass in the program.
+
+string argv[] is ARGument Vector. This is an array of strings. Helpful for controlling the type of input the user is able to provide.
+
