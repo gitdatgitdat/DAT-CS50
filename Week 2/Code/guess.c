@@ -14,5 +14,6 @@ int main(void)
     {
         printf("You're correct!\n");
     }
-    else printf("You're wrong!\n");
+    else 
+        printf("You're wrong!\n");
 }
