@@ -25,11 +25,27 @@ int main(void)
         // index = 0.0588 * L - 0.296 * S - 15.8
         // L = average number of letters per 100 words
         // S = average number of sentences per 100 words
+    float avrg_ltrs = (float) letters / words * 100;
+    float avrg_sent = (float) sentences / words * 100;
+    float index = 0.0588 * avrg_ltrs - 0.296 * avrg_sent - 15.8;
+    int grade = (int) round(index);
 
-    //Print the grade level
-    printf("Letter count: %i\n", letters);
-    printf("Word count: %i\n", words);
-    printf("Sentence count: %i\n", sentences);
+    // Print the grade level
+    // If index is < 1, say "Before Grade 1"
+    if (grade < 1)
+    {
+        printf("Before Grade 1\n");
+    }
+    // Or if index is >= 16, say "Grade 16+"
+    else if (grade >= 16)
+    {
+        printf("Grade 16+\n");
+    }
+    // Else print the grade rounded to the nearest int
+    else
+    {
+        printf("Grade %i\n", grade);
+    }
 }
 
 int count_letters(string text)
@@ -46,8 +62,6 @@ int count_letters(string text)
         }
     }
     // Return sum to main
-    
-    // Test to determine if functions are producing correct sums
     return letter_count;
 }
 
