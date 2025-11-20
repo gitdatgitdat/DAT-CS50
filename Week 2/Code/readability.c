@@ -1,5 +1,5 @@
-#include <ctype.h>
 #include <cs50.h>
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,9 +11,6 @@ int count_sentences(string text);
 int main(void)
 {
     // Prompt user for text
-        // If does not contain one word,
-        // starts or ends with a space,
-        // and does not have multiple spaces in a row
     string text = get_string("Text: ");
 
     // Count the number of letters, words, and sentences in the text
@@ -22,9 +19,9 @@ int main(void)
     int sentences = count_sentences(text);
 
     // Compute the Coleman-Liau index
-        // index = 0.0588 * L - 0.296 * S - 15.8
-        // L = average number of letters per 100 words
-        // S = average number of sentences per 100 words
+    // index = 0.0588 * L - 0.296 * S - 15.8
+    // L = average number of letters per 100 words
+    // S = average number of sentences per 100 words
     float avrg_ltrs = (float) letters / words * 100;
     float avrg_sent = (float) sentences / words * 100;
     float index = 0.0588 * avrg_ltrs - 0.296 * avrg_sent - 15.8;
@@ -72,10 +69,10 @@ int count_words(string text)
     // Determine length of string
     int len = strlen(text);
     // Run for loop based on length of string
-    for(int i = 0; i < len; i++)
+    for (int i = 0; i < len; i++)
     {
         // Go through the string array, but don't count spaces (32 in ASCII)
-        if(text[i] == 32 && i != 0)
+        if (text[i] == 32 && i != 0)
         {
             word_count++;
         }
