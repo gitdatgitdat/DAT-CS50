@@ -1,0 +1,41 @@
+Sort1 -
+
+ran5k: .074s
+ran10k: .178s
+ran50k: 5.9s
+
+rev5k: .064s
+rev10k: .263s
+rev50k: .226s
+
+sort5k: .032s
+sort10k: .053s
+sort50k: .779s
+
+Sort2
+
+ran5k: .030s
+ran10k: .041s
+ran50k: .976s
+
+rev5k: .033s
+rev10k: .044s
+rev50k: .889s
+
+sort5k: .029s
+sort10k: .056s
+sort50k: .725s
+
+Sort3
+
+ran5k: .047s
+ran10k: .128s
+ran50k: .520s
+
+rev5k: .040s
+rev10k: .117s
+rev50k: .912s
+
+sort5k: .043s
+sort10k: .121s
+sort50k: 2.233s
