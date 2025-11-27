@@ -1,5 +1,9 @@
 Sort1 -
 
+sort1 uses: Bubble
+
+How do you know?: It sorts the sorted list faster.
+
 ran5k: .074s
 ran10k: .178s
 ran50k: 5.9s
@@ -12,7 +16,11 @@ sort5k: .032s
 sort10k: .053s
 sort50k: .779s
 
-Sort2
+Sort2 -
+
+sort2 uses: Merge
+
+How do you know?: Consistent speed across all three list types.
 
 ran5k: .030s
 ran10k: .041s
@@ -26,7 +34,11 @@ sort5k: .029s
 sort10k: .056s
 sort50k: .725s
 
-Sort3
+Sort3 -
+
+sort3 uses: Selection
+
+How do you know?: It sorts the sorted listed slower.
 
 ran5k: .047s
 ran10k: .128s
