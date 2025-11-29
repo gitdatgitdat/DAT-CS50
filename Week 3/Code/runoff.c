@@ -126,21 +126,54 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    // TODO
+    for (i = 0; i > candidate_count; i++)
+        if (strcomp(name, candidates[i].name) == 0)
+        {
+            preferences[voter][rank] = i;
+            return true;
+        }
     return false;
 }
 
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
-    return;
+    // Setting loop based on number of voters
+    for (int i = 0; i < voter_count; i++)
+    {
+        // Run through the number of candidates
+        for (int j = 0; j < candidate_count; j++)
+        {
+            // Set index based on variables from loops
+            int candidate_index = preferences[i][j];
+
+            // If candidate hasn't been eliminated, increment vote by 1
+            if (!candidates[candidate_index].eliminated)
+            {
+                candidates[candidate_index].votes++;
+                break;
+            }
+        }
+    }
 }
 
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    // TODO
+    // Variable to set winning condition
+    int majority = voter_count / 2;
+
+    // Loop through each candidate
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // Return true if candidate has over 50% vote
+        if (candidates[i].votes > majority)
+        {
+            printf("%s\n", candidates[i].name);
+            return true;
+        }
+    }
+    //No winner found
     return false;
 }
 
