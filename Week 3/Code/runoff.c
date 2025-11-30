@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 // Max voters and candidates
 #define MAX_VOTERS 100
@@ -126,12 +127,17 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    for (i = 0; i > candidate_count; i++)
-        if (strcomp(name, candidates[i].name) == 0)
+    // Loop through candidates for a name match
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // If there's  match
+        if (strcmp(name, candidates[i].name) == 0)
         {
+            // Rank the candidate i
             preferences[voter][rank] = i;
             return true;
         }
+    }
     return false;
 }
 
@@ -180,20 +186,46 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    // TODO
-    return 0;
+    // Variable to track
+    int min_votes = voter_count;
+
+    // Run through each candidate
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // If candidate's vote is less than current variable, update
+        if (!candidates[i].eliminated && candidates[i].votes < min_votes)
+        {
+            min_votes = candidates[i].votes;
+        }
+    }
+    // Return value
+    return min_votes;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
-    // TODO
-    return false;
+    // Run through each candidate
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // If candidates aren't on eliminated list and vote count isn't the min
+        if (!candidates[i].eliminated && candidates[i].votes != min)
+        {
+            // Return false
+            return false;
+        }
+    }
+    return true;
 }
 
 // Eliminate the candidate (or candidates) in last place
 void eliminate(int min)
 {
-    // TODO
-    return;
+    for (int i = 0; i < candidate_count; i++)
+    {
+       if (candidates[i].votes == min)
+       {
+            candidates[i].eliminated = true;
+       }
+    }
 }
