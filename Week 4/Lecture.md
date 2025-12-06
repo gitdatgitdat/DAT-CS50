@@ -101,7 +101,7 @@ You're looking for the first character of a string via the pointer, and the func
 
 If you prefer, you can even create your own struct with the same function:
 
-typedef char * string;
+typedef char *string;
 
 This was essentially what cs50.h was doing as far as identifying string as a data type.
 
@@ -109,5 +109,35 @@ NOTE: Real world, you want be using char *. The other nerds will make fun of you
 
 ---
 
-POINTER ARITHMETIC
+MORE NEW SYNTAX
 
+malloc = Memory allocation control that allows us to call for an address in memory.
+
+free = Free up memory so you don't run out.
+
+If we were trying to copy a string, you may see something like this:
+
+	char *s = get_string("s: ");
+
+    char *t = malloc(strlen(s) + 1);
+
+    for (int i = o, n = strlen(s); i <= n; i++)
+    {
+        t[i] = s[i];
+    }
+	
+Why not just do a simple s = string and t = s? The two variables are pointing at the same address. So not only if we change s will effect t, but changing t will effect s. Doing what we did above will allocate a new piece of memeory that's the same size and copy everything in s to t. Allowing us to manipulate t without impacting s.
+
+Memory allocation is very important. We have tools we can use to assist in diagnosing problems when they occur. Such as:
+
+Valgrind
+
+If we wanted to check our memory.c program we would run:
+
+valgrind  ./memory
+
+And an output will be provided indicating if there are any memory leaks. It will be a lot to take in, but try to cipher through for tid bits that can help identify issues to be resolved.
+
+---
+
+Garbage Values
