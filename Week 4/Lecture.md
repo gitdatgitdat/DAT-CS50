@@ -51,7 +51,7 @@ Why is this helpful? Well, due to it containing 16 hexadecimal can display a byt
 
 --- 
 
-New Syntax!
+NEW SYNTAX!
 
 & = 'Address of' operator. Where does this variable live?
 * = Dereference operator. We take an address, and go there.
@@ -82,3 +82,32 @@ David says use:
 int *p = &n;
 
 So we're using that.
+
+---
+
+STRINGS
+
+So C actually doesn't use 'string' as a data type. By using cs50.h we have been able to work around that, but we'd actually point at the start of the string in memory and run through the array until reaching null.
+
+So instead of:
+
+string s = "HI!";
+
+We can remove the training wheels and put:
+
+char *s = "HI!";
+
+You're looking for the first character of a string via the pointer, and the function will run through until it reaches the end of that array.
+
+If you prefer, you can even create your own struct with the same function:
+
+typedef char * string;
+
+This was essentially what cs50.h was doing as far as identifying string as a data type.
+
+NOTE: Real world, you want be using char *. The other nerds will make fun of you otherwise.
+
+---
+
+POINTER ARITHMETIC
+
