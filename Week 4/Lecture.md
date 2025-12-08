@@ -140,4 +140,31 @@ And an output will be provided indicating if there are any memory leaks. It will
 
 ---
 
-Garbage Values
+Heap Overflow occurs when you request memory allocations so often that you begin over writing over other chunks of memory. So you're erasing other chunks of data in your system to make room for these allocations.
+
+Similarly there is Stack Overflow, but is when you make a too large a stack of functions that eventually run out of memory to use.
+
+These are both examples of Buffer Overflow and cause issues in today's tech world. Crowdstrikes crash earlier this year occured when an array of 20 was asked to make a call to the 21st element, which resulted in system failure.
+
+---
+
+Like strings, get_int has always been a set of training wheels supplied by cs50.h. So how would we operate with out it? You would use something like this:
+
+    int n;
+    printf("n: ");
+    scanf("%i", &n);
+    printf("n: %i\n", n);
+	
+You're creating n as a variable thats an int.
+printf gets input from the user.
+scanf reads the input from the user, and sends it to the address of n. Giving it that value.
+printf then prints n, which has the stored value of the user's input.
+
+If we were to do a similar piece of code, but with strings, it would look like:
+
+    char *s;
+    printf("s: ");
+    scanf("%s", s);
+    printf("s: %s\n", s);
+	
+However this is dangerous, in particular the fact no memory allocation is begin set. So you run the risk of overflowing in one or another. You could add malloc but that's really kicing the can down the road, as the user could still provide enough input to cause overflow. Which is why functions like get_string exist, which help us avoid problems like this.
