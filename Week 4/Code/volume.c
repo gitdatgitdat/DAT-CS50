@@ -1,15 +1,22 @@
-#include <cs50.h>
-#include <stdio.h>
+// Modifies the volume of an audio file
 
-for main(int argc, char *argv[])
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+// Number of bytes in .wav header
+const int HEADER_SIZE = 44;
+
+int main(int argc, char *argv[])
 {
-    // Command line arguments check
+    // Check command-line arguments
     if (argc != 4)
     {
-        printf("Usage: ./volume input.wave output.wav fator\n");
+        printf("Usage: ./volume input.wav output.wav factor\n");
         return 1;
     }
 
+    // Open files and determine scaling factor
     FILE *input = fopen(argv[1], "r");
     if (input == NULL)
     {
@@ -26,10 +33,11 @@ for main(int argc, char *argv[])
 
     float factor = atof(argv[3]);
 
-    // TO DO: Cpy head from input file to output file
+    // TODO: Copy header from input file to output file
 
-    // TO DO: Read samples from input file and write updated data to output file
+    // TODO: Read samples from input file and write updated data to output file
 
+    // Close files
     fclose(input);
     fclose(output);
 }
