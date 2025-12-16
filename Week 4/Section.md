@@ -76,3 +76,9 @@ buffer is the location to store these blocks.
 
 So when using fread, where are we putting the data? How many and what size? And from where are we getting that?
 
+Now lets go over writing to a file:
+
+fwrite(buffer, 1, 4, output);
+
+The syntax is very similar. The first argument, buffer, is where we we are writing from. Then, 1 and 4, what size and how many of those units? And to where, which in this case is output.
+
