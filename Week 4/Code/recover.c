@@ -1,6 +1,6 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 
 #define BLOCK_SIZE 512
 
@@ -30,16 +30,14 @@ int main(int argc, char *argv[])
     // Number of JPEGs
     int jpg_count = 0;
 
-    // Naming JPEG files
-    char filename[0];
+    // Naming JPEG files: 000.jpg" + '\0'
+    char filename[8];
 
     // While there's still data left to read from the memory card
-    while(fread(buffer, 1, sizeof(buffer), card) == sizeof(buffer))
+    while (fread(buffer, 1, sizeof(buffer), card) == sizeof(buffer))
     {
         // Create JPEGs from the data
-        if (buffer[0] == 0xff &&
-            buffer[1] == 0xd8 &&
-            buffer[2] == 0xff &&
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff &&
             (buffer[3] & 0xf0) == 0xe0)
         {
             // If a new JPEG file discovered
@@ -48,16 +46,34 @@ int main(int argc, char *argv[])
                 // Closer current file
                 fclose(img);
             }
-            // Else open a new JPEG and write this block to it
-            else
 
+            // Create new filename: ###.jpg
+            sprintf(filename, "%03i.jpg", jpg_count);
+            jpg_count++;
 
+            // Open a new JPEG to write to
+            img = fopen(filename, "w");
+            if (img == NULL)
+            {
+                fclose(card);
+                return 1;
+            }
+
+            // Write this block to the new JPEG
+            fwrite(buffer, 1, BLOCK_SIZE, img);
         }
         else
         {
             // If currently writing a JPEG, write this block to it
-            // Else do nothing
+            if (img != NULL)
+            {
+                fwrite(buffer, 1, BLOCK_SIZE, img);
+            }
         }
+    }
+    if (img != NULL)
+    {
+        fclose(img);
     }
 
     fclose(card);
