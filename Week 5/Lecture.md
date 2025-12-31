@@ -30,4 +30,21 @@ stack;
 
 ---
 
-Whether you want to use a queue or stack just depends on the context of your goal or objective.
+Linked Lists
+
+So standard arrays are in a shared space in your memory and ending with a null value to express the end of the array. But what if instead each element on your array what randomly disributed across memory and then each element is tied together via pointers. This is the premise for linked lists.
+
+Each individual element, or list, points to the next. There is then one extra pointer used to dictate which element is the start of the list. While this offers more flexibility than a standard array, it does take up more space overall.
+
+In code, this may look like:
+
+typedef struct node
+{
+	int number;
+	struct node *next;
+}
+node;
+
+---
+
+
