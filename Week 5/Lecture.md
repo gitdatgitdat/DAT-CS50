@@ -47,4 +47,45 @@ node;
 
 ---
 
+Trees
+
+So arrays are easy but not very flexible. Lists are very flexible but not very easy to code. This is where trees come in. Specifically we will be looking at binary search trees. In code, it may look like this:
+
+typedef struct node
+{
+	int number;
+	struct node *left;
+	struct node *right;
+}
+node;
+
+Now this is great! But what is the draw back? Well, this will now have twice the pointers for the left and right nodes. Now how we would search a tree like we've built?
+
+bool search(node *tree, int number)
+{
+	if (tree == null
+	{
+		return false;
+	}
+	else if (number < tree=>number)
+	{
+		return search(tree->left, number)
+	}
+	else if (number > tree->number)
+	{
+		return search(tree->right, number);
+	}
+	else
+	{
+		return true;
+	}
+}
+
+The trick with trees is they work great if everything is balanced correctly. But if we have one created that is unbalanced, it loses its functionality rather quickly. So how can we control this to make sure it stays balanced?
+
+---
+
+Hash Functions
+
+Hashing is taking in one value and producing another based on characteristics of the original. By assigning a certain hash, we can assist our trees in staying balanced. This is becomes a Hash Table.
 
