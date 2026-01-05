@@ -89,3 +89,6 @@ Hash Functions
 
 Hashing is taking in one value and producing another based on characteristics of the original. By assigning a certain hash, we can assist our trees in staying balanced. This is becomes a Hash Table.
 
+Say we recreated our phonebook app and used twenty six hashes, or buckets, for each letter in the name. This will work well until we have more than one contact that starts with the same letter. That will call collisions.
+
+To work around this, we can create a linked list for that bucket.
