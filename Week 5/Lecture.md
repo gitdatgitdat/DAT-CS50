@@ -91,4 +91,35 @@ Hashing is taking in one value and producing another based on characteristics of
 
 Say we recreated our phonebook app and used twenty six hashes, or buckets, for each letter in the name. This will work well until we have more than one contact that starts with the same letter. That will call collisions.
 
-To work around this, we can create a linked list for that bucket.
+To work around this, we can create a linked list for that bucket. It would be created like this:
+
+node *table[26];
+
+Which is essentially creating pointers to 26 different linked lists. We define that struct like so:
+
+typedef struct node
+{
+	char *name;
+	char *number;
+	struct node *next;
+}
+node;
+
+This is very similar to our previous phonebook but now it has a third line to contain the address for the next node. But in this overly simplistic approach, we run the risk of collision and/or general inefficiency. But if a hash table is built cleverly, it can be a very effect means to manage data.
+
+---
+
+Tries
+
+Lastly we have tries, which are like trees that connect arrays to other arrays. In our phonebook example, the first letter of your name would be in one array, which would link to another array that holds the second letter of your name, which would link... Well, you get the point until we end with an null to indicate the end of the inpoint.
+
+While this has arrays built on arrays (So lots of memory used), the amount of time required to lookup, add, or remove someones name to this structure, it would be near constant and NOT dependent on n. The only controlling variable would be the length of the name being added. 
+
+This in struct may look like this in code:
+
+typedef struct node
+{
+	struct node *children[26];
+	char *number;
+}
+node;
