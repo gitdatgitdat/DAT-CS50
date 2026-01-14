@@ -44,3 +44,10 @@ See linked list.c for a full overview of creating a linked list.
 
 ---
 
+Hash Tables
+
+Stores values in a long list that is linked with other lists depending on the value. It has dynamic size but searching can take time if the list in question has many elements added to it.
+
+The value is determined by the hash function based on certain values. In lecture we used the first character in a string. We could also go by the length of a string. 
+
+A good hash function should always give you the same output for the same input, produce an even distribution across buckets, and use all the buckets.
