@@ -49,6 +49,8 @@ bool check(const char *word)
 
         word_count++;
     }
+    fclose(source);
+    return true;
 }
 
 // Hashes word to a number
