@@ -24,8 +24,31 @@ unsigned int word_count = 0;
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
-    return false;
+    FILE *source = fopen(dictionary, "r");
+    if (source == NULL)
+    {
+        return false;
+    }
+
+    char word[LENGTH + 1];
+
+    while (fscanf(source, "%45", word) == 1)
+    {
+        node *n = malloc(sizeof(node));
+        if (n = NULL)
+        {
+            fclose(source);
+            return false;
+        }
+        strcpy(n->word, word);
+
+        unsigned int h = hash(word);
+
+        n->next = table[h];
+        table[h] = n;
+
+        word_count++;
+    }
 }
 
 // Hashes word to a number
