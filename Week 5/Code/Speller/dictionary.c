@@ -12,7 +12,7 @@ typedef struct node
     struct node *next;
 } node;
 
-// TODO: Choose number of buckets in hash table
+// Choose number of buckets in hash table
 const unsigned int N = 26;
 
 // Hash table
@@ -24,33 +24,8 @@ unsigned int word_count = 0;
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    FILE *source = fopen(dictionary, "r");
-    if (source == NULL)
-    {
-        return false;
-    }
-
-    char word[LENGTH + 1];
-
-    while (fscanf(source, "%45", word) == 1)
-    {
-        node *n = malloc(sizeof(node));
-        if (n = NULL)
-        {
-            fclose(source);
-            return false;
-        }
-        strcpy(n->word, word);
-
-        unsigned int h = hash(word);
-
-        n->next = table[h];
-        table[h] = n;
-
-        word_count++;
-    }
-    fclose(source);
-    return true;
+    // TODO
+    return false;
 }
 
 // Hashes word to a number
@@ -63,8 +38,35 @@ unsigned int hash(const char *word)
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary)
 {
-    // TODO
-    return false;
+    FILE *source = fopen(dictionary, "r");
+    if (source == NULL)
+    {
+        return false;
+    }
+
+    char word[LENGTH + 1];
+
+    while (fscanf(source, "%45s", word) == 1)
+    {
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            fclose(source);
+            return false;
+        }
+
+        strcpy(n->word, word);
+
+        unsigned int h = hash(word);
+
+        n->next = table[h];
+        table[h] = n;
+
+        word_count++;
+    }
+
+    fclose(source);
+    return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
