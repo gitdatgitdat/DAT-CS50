@@ -27,7 +27,17 @@ unsigned int word_count = 0;
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    unsigned int h = hash(word);
+
+    node *cursor = table[h];
+    while (cursor != NULL)
+    {
+        if (strcasecmp(cursor->word, word) == 0)
+        {
+            return true;
+        }
+        cursor = cursor->next;
+    }
     return false;
 }
 
@@ -84,13 +94,22 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    return word_count;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
-    return false;
+    for (int i = 0; i < N; i++)
+    {
+        node *cursor = table[i];
+
+        whle (cursor != NULL)
+        {
+            node *tmp = cursor;
+            cursor = cursor->next;
+            free(tmp);
+        }
+    }
+    return true;
 }
