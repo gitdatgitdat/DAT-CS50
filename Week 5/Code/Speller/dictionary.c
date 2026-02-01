@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 
 #include "dictionary.h"
 
@@ -63,6 +64,7 @@ bool load(const char *dictionary)
     FILE *source = fopen(dictionary, "r");
     if (source == NULL)
     {
+        perror("fopen");
         return false;
     }
 
@@ -100,16 +102,19 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    for (int i = 0; i < N; i++)
+    for (unsigned int i = 0; i < N; i++)
     {
         node *cursor = table[i];
 
-        whle (cursor != NULL)
+        while (cursor != NULL)
         {
             node *tmp = cursor;
             cursor = cursor->next;
             free(tmp);
         }
+        table[i] = NULL;
     }
+    word_count = 0;
     return true;
 }
+
